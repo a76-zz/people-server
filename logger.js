@@ -1,7 +1,7 @@
-const bunyan = require('bunyan')
-const packageJson = require('./package.json')
+const bunyan = require('bunyan');
+const packageJson = require('./package.json');
 
-const { name, version } = packageJson
+const { name, version } = packageJson;
 
 module.exports = bunyan.createLogger({
   name,
@@ -16,4 +16,4 @@ module.exports = bunyan.createLogger({
       stream: process.stderr
     }
   ]
-})
+});
