@@ -3,6 +3,7 @@ const { messages } = require('people-config');
 const logger = require('./../logger');
 
 const { contacts } = initialState;
+let id = contacts.reduce((result, { id }) => result < id ? id : result, -1);
 
 function emit(socket, type, payload) {
   logger.info({ type });
@@ -21,6 +22,7 @@ function sync(socket) {
 }
 
 function addContact(io, contact) {
+  contact.id = ++id;
   contacts.push(contact);
 
   return share(io, messages.addContact, contact);
